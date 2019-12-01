@@ -6,13 +6,12 @@ Easy API's for .Net
 
 # Packages / Projects Used
 - [Microsoft.AspNetCore.Mvc](https://github.com/aspnet/mvc)
-- [Microsoft.AspNetCore.Identity](https://github.com/aspnet/Identity)
-- [Microsoft.AspNetCore.Authentication.Cookies](https://github.com/aspnet/Security)
-- [Microsoft.AspNetCore.Authentication.JwtBearer](https://github.com/aspnet/AspNetCore)
-- [Microsoft.Extensions.Identity.Stores](https://github.com/aspnet/AspNetCore)
-- [Microsoft.AspNetCore.Identity.EntityFrameworkCore](https://github.com/aspnet/AspNetCore)
-- [Microsoft.EntityFrameworkCore.Design](https://github.com/aspnet/EntityFrameworkCore)
-- [Microsoft.EntityFrameworkCore.SqlServer](https://github.com/aspnet/EntityFrameworkCore)
-- [Microsoft.EntityFrameworkCore.InMemory](https://github.com/aspnet/EntityFrameworkCore)
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 - [Formula.SimpleRepo](https://github.com/NephosIntegration/Formula.SimpleRepo)
+
+
+# External Auth Providers
+- [Microsoft.AspNetCore.Authentication.Facebook]
+- [Microsoft.AspNetCore.Authentication.Google]
+- [Microsoft.AspNetCore.Authentication.MicrosoftAccount]
+- [Microsoft.AspNetCore.Authentication.Twitter]

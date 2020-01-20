@@ -6,10 +6,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Formula.Core\Formula.Core.csproj" />
+    <ProjectReference Include="..\Formula.SimpleRepo\Formula.SimpleRepo.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Formula.SimpleRepo\Formula.SimpleRepo.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>

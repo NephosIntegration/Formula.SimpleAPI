@@ -50,7 +50,7 @@ namespace Formula.SimpleAPI
         public virtual async Task<TModel> Post(TModel model)
         {
             var id = await _repository.InsertAsync(model);
-            return await _repository.GetAsync(id);
+            return await _repository.GetAsync(id.Value);
         }
 
         // Updates the resource identified by id
@@ -65,15 +65,15 @@ namespace Formula.SimpleAPI
         [HttpPatch("{id}")]
         public virtual async Task<TModel> Patch(int id, PatchModel model)
         {
-            throw new Exception("Not implemented yet");
+            //throw new Exception("Not implemented yet");
             return await _repository.GetAsync(id);
         }
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<TModel> Delete(int id, TModel model)
+        public virtual async Task<TModel> Delete(int id)
         {
-            var recordsUpdated = await _repository.DeleteAsync(model);
+            var recordsUpdated = await _repository.DeleteAsync(id);
             return await _repository.GetAsync(id);
         }
     }

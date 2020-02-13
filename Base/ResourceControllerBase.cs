@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Formula.SimpleRepo;
+using Formula.Core;
 
 namespace Formula.SimpleAPI
 {
@@ -20,34 +21,73 @@ namespace Formula.SimpleAPI
 
         // Create a new resource
         [HttpPost]
-        public virtual async Task<TModel> Post(TModel model)
+        public virtual async Task<StatusBuilder> Post(TModel model)
         {
-            var id = await _repository.InsertAsync(model);
-            return await _repository.GetAsync(id.Value);
+            var output = new StatusBuilder();
+            try
+            {
+                var id = await _repository.InsertAsync(model);
+                var results = await _repository.GetAsync(id.Value);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
 
         // Updates the resource identified by id
         [HttpPut("{id}")]
-        public virtual async Task<TModel> Put(int id, TModel model)
+        public virtual async Task<StatusBuilder> Put(int id, TModel model)
         {
-            var recordsUpdated = await _repository.UpdateAsync(model);
-            return await _repository.GetAsync(id);
+            var output = new StatusBuilder();
+            try
+            {
+                var recordsUpdated = await _repository.UpdateAsync(model);
+                var results = await _repository.GetAsync(id);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
 
         // Update a specific attribute on a resource
         [HttpPatch("{id}")]
-        public virtual async Task<TModel> Patch(int id, PatchModel model)
+        public virtual async Task<StatusBuilder> Patch(int id, PatchModel model)
         {
-            //throw new Exception("Not implemented yet");
-            return await _repository.GetAsync(id);
+            var output = new StatusBuilder();
+            try
+            {
+                var results = await _repository.GetAsync(id);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<TModel> Delete(int id)
+        public virtual async Task<StatusBuilder> Delete(int id)
         {
-            var recordsUpdated = await _repository.DeleteAsync(id);
-            return await _repository.GetAsync(id);
+            var output = new StatusBuilder();
+            try
+            {
+                var recordsUpdated = await _repository.DeleteAsync(id);
+                var results = await _repository.GetAsync(id);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
     }
 }

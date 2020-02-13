@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Formula.Core;
 
 namespace Formula.SimpleAPI
 {
     public interface IResourceController<TController, TModel, TRepository>
     {
         [HttpGet]
-        Task<IEnumerable<TModel>> GetList();
+        Task<StatusBuilder> GetList();
 
         [HttpGet("{id}")]
-        Task<TModel> Get(int id);
+        Task<StatusBuilder> Get(int id);
     }
 }

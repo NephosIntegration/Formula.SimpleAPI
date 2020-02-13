@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Formula.SimpleRepo;
+using Formula.Core;
 
 namespace Formula.SimpleAPI
 {
@@ -25,24 +26,54 @@ namespace Formula.SimpleAPI
         }
 
         [HttpGet("query/{constraints}")]
-        public virtual Task<IEnumerable<TModel>> Query(String constraints)
+        public virtual async Task<StatusBuilder> QueryAsync(String constraints)
         {
-            var bindable = _repository.WhereFromJson(constraints);
-            return _repository.GetListAsync(bindable.Sql, bindable.Parameters);
+            var output = new StatusBuilder();
+            try
+            {
+                var bindable = _repository.WhereFromJson(constraints);
+                var results = await _repository.GetListAsync(bindable.Sql, bindable.Parameters);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
 
         // Gets a specific resource by id
         [HttpGet("{id}")]
-        public virtual Task<TModel> Get(int id) 
+        public virtual async Task<StatusBuilder> Get(int id) 
         {
-            return _repository.GetAsync(id);
+            var output = new StatusBuilder();
+            try
+            {
+                var results = await _repository.GetAsync(id);
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
 
         // Gets all resources
         [HttpGet]
-        public virtual Task<IEnumerable<TModel>> GetList()
+        public virtual async Task<StatusBuilder> GetList()
         {
-            return _repository.GetListAsync();
+            var output = new StatusBuilder();
+            try
+            {
+                var results = await _repository.GetListAsync();
+                output.SetData(results);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
         }
     }
 }

@@ -84,7 +84,7 @@ services.AddSimpleCors(CorsConfigDefinition.Get("corsConfig.json", () =>
 }));
 ```
 
-*(See ConfigLoader in Formula.Core for details on how this functionality may be leverage for other task)*
+*(See ConfigLoader in Formula.SimpleCore for details on how this functionality may be leverage for other task)*
 
 ## Startup.cs - Configure
 

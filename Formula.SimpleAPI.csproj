@@ -1,15 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Formula.SimpleAPI</AssemblyName>
+    <PackageId>Formula.SimpleAPI</PackageId>
+    <Version>1.0.0</Version>
+    <PackageTags>utilities</PackageTags>
+    <Title>Formula Simple API</Title>
+    <Description>Easy API's for .Net</Description>
+    <Authors>Joshua Williams</Authors>  
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Formula.Core\Formula.Core.csproj" />
-    <ProjectReference Include="..\Formula.SimpleRepo\Formula.SimpleRepo.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Formula.SimpleCore" Version="1.0.0" />
+    <PackageReference Include="Formula.SimpleRepo" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Formula.Core;
+using Formula.SimpleCore;
 
 namespace Formula.SimpleAPI
 {

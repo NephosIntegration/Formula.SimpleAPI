@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Formula.SimpleRepo;
-using Formula.Core;
+using Formula.SimpleCore;
 
 namespace Formula.SimpleAPI
 {

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -31,8 +32,7 @@ namespace Formula.SimpleAPI
             var output = new StatusBuilder();
             try
             {
-                var bindable = _repository.WhereFromJson(constraints);
-                var results = await _repository.GetListAsync(bindable.Sql, bindable.Parameters);
+                var results = await _repository.GetAsync(constraints);
                 output.SetData(results);
             }
             catch (Exception ex)
@@ -66,7 +66,7 @@ namespace Formula.SimpleAPI
             var output = new StatusBuilder();
             try
             {
-                var results = await _repository.GetListAsync();
+                var results = await _repository.GetAsync();
                 output.SetData(results);
             }
             catch (Exception ex)

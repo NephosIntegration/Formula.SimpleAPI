@@ -17,7 +17,7 @@ namespace Formula.SimpleAPI
                 policyBuilder.AllowAnyMethod().AllowAnyHeader();
             }));
 
-            return services;                
+            return services;
         }
 
         public static IApplicationBuilder UseSimpleCors(this IApplicationBuilder app) {

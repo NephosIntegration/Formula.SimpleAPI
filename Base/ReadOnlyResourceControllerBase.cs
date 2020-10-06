@@ -49,7 +49,7 @@ namespace Formula.SimpleAPI
             var output = new StatusBuilder();
             try
             {
-                var results = await _repository.GetAsync(id);
+                var results = await _repository.GetAsync((object)id);
                 output.SetData(results);
             }
             catch (Exception ex)

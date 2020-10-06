@@ -45,7 +45,7 @@ namespace Formula.SimpleAPI
             try
             {
                 var recordsUpdated = await _repository.UpdateAsync(model);
-                var results = await _repository.GetAsync(id);
+                var results = await _repository.GetAsync((object)id);
                 output.SetData(results);
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace Formula.SimpleAPI
             var output = new StatusBuilder();
             try
             {
-                var results = await _repository.GetAsync(id);
+                var results = await _repository.GetAsync((object)id);
                 output.SetData(results);
             }
             catch (Exception ex)
@@ -79,8 +79,8 @@ namespace Formula.SimpleAPI
             var output = new StatusBuilder();
             try
             {
-                var recordsUpdated = await _repository.DeleteAsync(id);
-                var results = await _repository.GetAsync(id);
+                var recordsUpdated = await _repository.DeleteAsync((object)id);
+                var results = await _repository.GetAsync((object)id);
                 output.SetData(results);
             }
             catch (Exception ex)

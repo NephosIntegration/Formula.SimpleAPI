@@ -67,7 +67,7 @@ public override Task<StatusBuilder> GetList() { return base.GetList(); }
 public override Task<StatusBuilder> Post(TModel model) { return base.Post(model); }
 
 [HttpPut("{id}")]
-public override Task<StatusBuilder> Put(object id, TModel model) { return base.Put(id, model); }
+public override Task<StatusBuilder> Put(TModel model) { return base.Put(model); }
 
 [HttpPatch("{id}")]
 public override Task<StatusBuilder> Patch(object id, PatchModel model) { return base.Patch(id, model); }

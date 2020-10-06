@@ -37,16 +37,15 @@ namespace Formula.SimpleAPI
             return output;
         }
 
-        // Updates the resource identified by id
-        [HttpPut("{id}")]
-        public virtual async Task<StatusBuilder> Put(object id, TModel model)
+        // Updates the resource
+        [HttpPut]
+        public virtual async Task<StatusBuilder> Put(TModel model)
         {
             var output = new StatusBuilder();
             try
             {
                 var recordsUpdated = await _repository.UpdateAsync(model);
-                var results = await _repository.GetAsync(id);
-                output.SetData(results);
+                output.SetData(recordsUpdated);
             }
             catch (Exception ex)
             {

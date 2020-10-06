@@ -49,6 +49,44 @@ This controller alone provides the following fetch type routes
 * Get - /todo/1 = Returns the Todo record with the id of 1
 * Query - /todo/query/{'type':'chores','deleted':false} = would return all todo items that are of type chore that have not been deleted
 
+## Overriding Endpoints
+
+The following endpoints are provided for you to override as necessary if you want to modify the default behavior.
+
+```c#
+[HttpGet("query/{constraints}")]
+public override Task<StatusBuilder> QueryAsync(String constraints) { return base.QueryAsync(constraints); }
+
+[HttpGet("{id}")]
+public override Task<StatusBuilder> Get(object id) { return base.Get(id); }
+
+[HttpGet]
+public override Task<StatusBuilder> GetList() { return base.GetList(); }
+
+[HttpPost]
+public override Task<StatusBuilder> Post(TModel model) { return base.Post(model); }
+
+[HttpPut("{id}")]
+public override Task<StatusBuilder> Put(object id, TModel model) { return base.Put(id, model); }
+
+[HttpPatch("{id}")]
+public override Task<StatusBuilder> Patch(object id, PatchModel model) { return base.Patch(id, model); }
+
+[HttpDelete("{id}")]
+public override Task<StatusBuilder> Delete(object id) { return base.Delete(id); }
+```
+
+You can decorate these endpoints with any sort of annotations necessary (*Such as `[Authorize(Roles = RoleTypes.ADMINISTRATOR)]`, etc..*).
+
+If you want to hide certain endpoint (such as the abilty to get all records), you can use the following.
+
+```c#
+[HttpGet]
+[ApiExplorerSettings(IgnoreApi = true)]
+[NonAction]
+public override Task<StatusBuilder> GetList() { return null; }
+```
+
 # CORS Support via config file
 A simple wrapper for CORS support can be supplied by a config file as a wrapper around the standard .net core utilities, allowing you to load your configuration from a config file.
 

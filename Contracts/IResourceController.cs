@@ -12,6 +12,6 @@ namespace Formula.SimpleAPI
         Task<StatusBuilder> GetList();
 
         [HttpGet("{id}")]
-        Task<StatusBuilder> Get(int id);
+        Task<StatusBuilder> Get(object id);
     }
 }

@@ -58,7 +58,7 @@ The following endpoints are provided for you to override as necessary if you wan
 public override Task<StatusBuilder> QueryAsync(String constraints) { return base.QueryAsync(constraints); }
 
 [HttpGet("{id}")]
-public override Task<StatusBuilder> Get(object id) { return base.Get(id); }
+public override Task<StatusBuilder> Get(String id) { return base.Get(id); }
 
 [HttpGet]
 public override Task<StatusBuilder> GetList() { return base.GetList(); }
@@ -67,13 +67,13 @@ public override Task<StatusBuilder> GetList() { return base.GetList(); }
 public override Task<StatusBuilder> Post(TModel model) { return base.Post(model); }
 
 [HttpPut("{id}")]
-public override Task<StatusBuilder> Put(TModel model) { return base.Put(model); }
+public override Task<StatusBuilder> Put(String id, TModel model) { return base.Put(id, model); }
 
 [HttpPatch("{id}")]
-public override Task<StatusBuilder> Patch(object id, PatchModel model) { return base.Patch(id, model); }
+public override Task<StatusBuilder> Patch(String id, PatchModel model) { return base.Patch(id, model); }
 
 [HttpDelete("{id}")]
-public override Task<StatusBuilder> Delete(object id) { return base.Delete(id); }
+public override Task<StatusBuilder> Delete(String id) { return base.Delete(id); }
 ```
 
 You can decorate these endpoints with any sort of annotations necessary (*Such as `[Authorize(Roles = RoleTypes.ADMINISTRATOR)]`, etc..*).

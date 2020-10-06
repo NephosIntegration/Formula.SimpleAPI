@@ -37,15 +37,16 @@ namespace Formula.SimpleAPI
             return output;
         }
 
-        // Updates the resource
+        // Updates the resource identified by id
         [HttpPut]
-        public virtual async Task<StatusBuilder> Put(TModel model)
+        public virtual async Task<StatusBuilder> Put(String id, TModel model)
         {
             var output = new StatusBuilder();
             try
             {
                 var recordsUpdated = await _repository.UpdateAsync(model);
-                output.SetData(recordsUpdated);
+                var results = await _repository.GetAsync(id);
+                output.SetData(results);
             }
             catch (Exception ex)
             {
@@ -56,7 +57,7 @@ namespace Formula.SimpleAPI
 
         // Update a specific attribute on a resource
         [HttpPatch("{id}")]
-        public virtual async Task<StatusBuilder> Patch(object id, PatchModel model)
+        public virtual async Task<StatusBuilder> Patch(String id, PatchModel model)
         {
             var output = new StatusBuilder();
             try
@@ -73,7 +74,7 @@ namespace Formula.SimpleAPI
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<StatusBuilder> Delete(object id)
+        public virtual async Task<StatusBuilder> Delete(String id)
         {
             var output = new StatusBuilder();
             try

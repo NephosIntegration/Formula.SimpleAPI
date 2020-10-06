@@ -44,7 +44,7 @@ namespace Formula.SimpleAPI
 
         // Gets a specific resource by id
         [HttpGet("{id}")]
-        public virtual async Task<StatusBuilder> Get(int id) 
+        public virtual async Task<StatusBuilder> Get(object id) 
         {
             var output = new StatusBuilder();
             try

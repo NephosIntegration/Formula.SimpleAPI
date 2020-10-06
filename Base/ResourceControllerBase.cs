@@ -39,7 +39,7 @@ namespace Formula.SimpleAPI
 
         // Updates the resource identified by id
         [HttpPut("{id}")]
-        public virtual async Task<StatusBuilder> Put(int id, TModel model)
+        public virtual async Task<StatusBuilder> Put(object id, TModel model)
         {
             var output = new StatusBuilder();
             try
@@ -57,7 +57,7 @@ namespace Formula.SimpleAPI
 
         // Update a specific attribute on a resource
         [HttpPatch("{id}")]
-        public virtual async Task<StatusBuilder> Patch(int id, PatchModel model)
+        public virtual async Task<StatusBuilder> Patch(object id, PatchModel model)
         {
             var output = new StatusBuilder();
             try
@@ -74,7 +74,7 @@ namespace Formula.SimpleAPI
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<StatusBuilder> Delete(int id)
+        public virtual async Task<StatusBuilder> Delete(object id)
         {
             var output = new StatusBuilder();
             try

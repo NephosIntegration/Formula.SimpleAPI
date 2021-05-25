@@ -54,26 +54,29 @@ This controller alone provides the following fetch type routes
 The following endpoints are provided for you to override as necessary if you want to modify the default behavior.
 
 ```c#
+[HttpPost("query")]
+public Task<Status<List<TModel>>> QueryAsync(TModel constraints) { base.QueryAsync(constraints); }
+
 [HttpGet("query/{constraints}")]
-public override Task<StatusBuilder> QueryAsync(String constraints) { return base.QueryAsync(constraints); }
+public override Task<Status<List<TModel>>> QueryAsync(String constraints) { return base.QueryAsync(constraints); }
 
 [HttpGet("{id}")]
-public override Task<StatusBuilder> Get(String id) { return base.Get(id); }
+public override Task<Status<TModel>> Get(String id) { return base.Get(id); }
 
 [HttpGet]
-public override Task<StatusBuilder> GetList() { return base.GetList(); }
+public override Task<Status<List<TModel>>> GetList() { return base.GetList(); }
 
 [HttpPost]
-public override Task<StatusBuilder> Post(TModel model) { return base.Post(model); }
+public override Task<Status<TModel>> Post(TModel model) { return base.Post(model); }
 
 [HttpPut("{id}")]
-public override Task<StatusBuilder> Put(String id, TModel model) { return base.Put(id, model); }
+public override Task<Status<TModel>> Put(String id, TModel model) { return base.Put(id, model); }
 
 [HttpPatch("{id}")]
-public override Task<StatusBuilder> Patch(String id, PatchModel model) { return base.Patch(id, model); }
+public override Task<Status<TModel>> Patch(String id, PatchModel model) { return base.Patch(id, model); }
 
 [HttpDelete("{id}")]
-public override Task<StatusBuilder> Delete(String id) { return base.Delete(id); }
+public override Task<Status<TModel>> Delete(String id) { return base.Delete(id); }
 ```
 
 You can decorate these endpoints with any sort of annotations necessary (*Such as `[Authorize(Roles = RoleTypes.ADMINISTRATOR)]`, etc..*).
@@ -84,7 +87,7 @@ If you want to hide certain endpoint (such as the abilty to get all records), yo
 [HttpGet]
 [ApiExplorerSettings(IgnoreApi = true)]
 [NonAction]
-public override Task<StatusBuilder> GetList() { return null; }
+public override Task<Status<List<TModel>>> GetList() { return null; }
 ```
 
 # CORS Support via config file
@@ -198,9 +201,9 @@ namespace MyApi.Controllers
         }
 
         [HttpPost]
-        public TypedStatusBuilder<HelloWorldModel> Post(HelloWorldModel model)
+        public Status<HelloWorldModel> Post(HelloWorldModel model)
         {
-            var output = new TypedStatusBuilder<HelloWorldModel>();
+            var output = new Status<HelloWorldModel>();
             try
             {
                 var message = new HelloWorldModel();

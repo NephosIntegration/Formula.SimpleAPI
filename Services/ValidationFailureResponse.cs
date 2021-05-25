@@ -10,11 +10,11 @@ namespace Formula.SimpleAPI
 {
     public class ValidationFailureResponse
     {
-        protected TypedStatusBuilder<String> results = null;
+        protected Status<String> results = null;
 
         public ValidationFailureResponse()
         {
-            this.results = new TypedStatusBuilder<string>();
+            this.results = new Status<string>();
         }
 
         public ValidationFailureResponse AddFailure(String message, String key)
@@ -23,7 +23,7 @@ namespace Formula.SimpleAPI
             return this;
         }
 
-        public TypedStatusBuilder<String> ParseFromModelState(ActionContext context)
+        public Status<String> ParseFromModelState(ActionContext context)
         {
             if (context.ModelState.IsValid == false)
             {

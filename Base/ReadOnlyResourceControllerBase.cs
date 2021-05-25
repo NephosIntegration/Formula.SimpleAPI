@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Formula.SimpleRepo;
 using Formula.SimpleCore;
+using Newtonsoft.Json;
 
 namespace Formula.SimpleAPI
 {
@@ -26,14 +27,30 @@ namespace Formula.SimpleAPI
             _repository = repository;
         }
 
-        [HttpGet("query/{constraints}")]
-        public virtual async Task<StatusBuilder> QueryAsync(String constraints)
+        [HttpPost("query")]
+        public virtual async Task<Status<List<TModel>>> QueryAsync(TModel constraints)
         {
-            var output = new StatusBuilder();
+            var output = new Status<List<TModel>>();
+            try
+            {
+                var serialized = JsonConvert.SerializeObject(constraints);
+                return await this.QueryAsync(serialized);
+            }
+            catch (Exception ex)
+            {
+                output.RecordFailure(ex.Message);
+            }
+            return output;
+        }
+
+        [HttpGet("query/{constraints}")]
+        public virtual async Task<Status<List<TModel>>> QueryAsync(String constraints)
+        {
+            var output = new Status<List<TModel>>();
             try
             {
                 var results = await _repository.GetAsync(constraints);
-                output.SetData(results);
+                output.SetData(results.ToList());
             }
             catch (Exception ex)
             {
@@ -44,9 +61,9 @@ namespace Formula.SimpleAPI
 
         // Gets a specific resource by id
         [HttpGet("{id}")]
-        public virtual async Task<StatusBuilder> Get(String id) 
+        public virtual async Task<Status<TModel>> Get(String id) 
         {
-            var output = new StatusBuilder();
+            var output = new Status<TModel>();
             try
             {
                 var results = await _repository.GetAsync((object)id);
@@ -61,13 +78,13 @@ namespace Formula.SimpleAPI
 
         // Gets all resources
         [HttpGet]
-        public virtual async Task<StatusBuilder> GetList()
+        public virtual async Task<Status<List<TModel>>> GetList()
         {
-            var output = new StatusBuilder();
+            var output = new Status<List<TModel>>();
             try
             {
                 var results = await _repository.GetAsync();
-                output.SetData(results);
+                output.SetData(results.ToList());
             }
             catch (Exception ex)
             {

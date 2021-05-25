@@ -21,9 +21,9 @@ namespace Formula.SimpleAPI
 
         // Create a new resource
         [HttpPost]
-        public virtual async Task<StatusBuilder> Post(TModel model)
+        public virtual async Task<Status<TModel>> Post(TModel model)
         {
-            var output = new StatusBuilder();
+            var output = new Status<TModel>();
             try
             {
                 var id = await _repository.InsertAsync(model);
@@ -39,9 +39,9 @@ namespace Formula.SimpleAPI
 
         // Updates the resource identified by id
         [HttpPut]
-        public virtual async Task<StatusBuilder> Put(String id, TModel model)
+        public virtual async Task<Status<TModel>> Put(String id, TModel model)
         {
-            var output = new StatusBuilder();
+            var output = new Status<TModel>();
             try
             {
                 var recordsUpdated = await _repository.UpdateAsync(model);
@@ -57,9 +57,9 @@ namespace Formula.SimpleAPI
 
         // Update a specific attribute on a resource
         [HttpPatch("{id}")]
-        public virtual async Task<StatusBuilder> Patch(String id, PatchModel model)
+        public virtual async Task<Status<TModel>> Patch(String id, PatchModel model)
         {
-            var output = new StatusBuilder();
+            var output = new Status<TModel>();
             try
             {
                 var results = await _repository.GetAsync((object)id);
@@ -74,9 +74,9 @@ namespace Formula.SimpleAPI
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<StatusBuilder> Delete(String id)
+        public virtual async Task<Status<TModel>> Delete(String id)
         {
-            var output = new StatusBuilder();
+            var output = new Status<TModel>();
             try
             {
                 var recordsUpdated = await _repository.DeleteAsync((object)id);

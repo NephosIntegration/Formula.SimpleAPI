@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleAPI</AssemblyName>
     <PackageId>Formula.SimpleAPI</PackageId>
-    <Version>1.0.3.4</Version>
+    <Version>1.1.0</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple API</Title>
     <Description>Easy API's for .Net</Description>
@@ -21,10 +21,10 @@
     </Content>
   </ItemGroup>  
 
-  <!--ItemGroup>
+  <!-- <ItemGroup>
     <ProjectReference Include="..\Formula.SimpleCore\Formula.SimpleCore.csproj" />
     <ProjectReference Include="..\Formula.SimpleRepo\Formula.SimpleRepo.csproj" />
-  </ItemGroup-->
+  </ItemGroup> -->
 
   <ItemGroup>
     <PackageReference Include="Formula.SimpleCore" Version="1.0.*" />

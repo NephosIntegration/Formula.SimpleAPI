@@ -8,10 +8,13 @@ namespace Formula.SimpleAPI
 {
     public interface IResourceController<TController, TModel, TRepository>
     {
+        [HttpGet("query/{constraints}")]
+        Task<Status<List<TModel>>> QueryAsync(String constraints);
+
         [HttpGet]
-        Task<StatusBuilder> GetList();
+        Task<Status<List<TModel>>> GetList();
 
         [HttpGet("{id}")]
-        Task<StatusBuilder> Get(String id);
+        Task<Status<TModel>> Get(String id);
     }
 }

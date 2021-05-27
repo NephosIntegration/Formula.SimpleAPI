@@ -11,9 +11,9 @@ namespace Formula.SimpleAPI
 {
     public abstract class SimpleControllerBase : Controller
     {
-        protected StatusBuilder HandleModelState()
+        protected Status<Object> HandleModelState()
         {
-            var results = new StatusBuilder();
+            var results = new Status<Object>();
 
             if (ModelState.IsValid == false) 
             {

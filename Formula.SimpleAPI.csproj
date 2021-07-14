@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleAPI</AssemblyName>
     <PackageId>Formula.SimpleAPI</PackageId>
-    <Version>1.1.2</Version>
+    <Version>1.1.3</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple API</Title>
     <Description>Easy API's for .Net</Description>

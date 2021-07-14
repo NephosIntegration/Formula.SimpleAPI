@@ -33,7 +33,11 @@ namespace Formula.SimpleAPI
             var output = new Status<List<TModel>>();
             try
             {
-                var serialized = JsonConvert.SerializeObject(constraints);
+                var serialized = JsonConvert.SerializeObject(
+                    constraints,
+                    Newtonsoft.Json.Formatting.None,
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
+                );
                 return await this.QueryAsync(serialized);
             }
             catch (Exception ex)

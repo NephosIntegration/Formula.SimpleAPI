@@ -38,7 +38,9 @@ namespace Formula.SimpleAPI
                     Newtonsoft.Json.Formatting.None,
                     new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
                 );
-                return await this.QueryAsync(serialized);
+                
+                var results = await _repository.GetAsync(serialized);
+                output.SetData(results.ToList());
             }
             catch (Exception ex)
             {

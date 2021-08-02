@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Formula.SimpleCore;
+using Formula.SimpleRepo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Formula.SimpleRepo;
-using Formula.SimpleCore;
+using System;
+using System.Threading.Tasks;
 
 namespace Formula.SimpleAPI
 {
@@ -39,7 +38,7 @@ namespace Formula.SimpleAPI
 
         // Updates the resource identified by id
         [HttpPut]
-        public virtual async Task<Status<TModel>> Put(String id, TModel model)
+        public virtual async Task<Status<TModel>> Put(string id, TModel model)
         {
             var output = new Status<TModel>();
             try
@@ -57,7 +56,7 @@ namespace Formula.SimpleAPI
 
         // Update a specific attribute on a resource
         [HttpPatch("{id}")]
-        public virtual async Task<Status<TModel>> Patch(String id, PatchModel model)
+        public virtual async Task<Status<TModel>> Patch(string id, PatchModel model)
         {
             var output = new Status<TModel>();
             try
@@ -74,7 +73,7 @@ namespace Formula.SimpleAPI
 
         // Delete removes resource
         [HttpDelete("{id}")]
-        public virtual async Task<Status<TModel>> Delete(String id)
+        public virtual async Task<Status<TModel>> Delete(string id)
         {
             var output = new Status<TModel>();
             try

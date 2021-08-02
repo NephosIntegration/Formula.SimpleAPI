@@ -1,30 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Formula.SimpleCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Formula.SimpleAPI
 {
     public abstract class SimpleControllerBase : Controller
     {
-        protected Status<Object> HandleModelState()
+        protected Status<object> HandleModelState()
         {
-            var results = new Status<Object>();
+            var results = new Status<object>();
 
-            if (ModelState.IsValid == false) 
+            if (ModelState.IsValid == false)
             {
                 var errors = ModelState.Keys.Select(e => "" + e + "");
 
-                foreach(var modelStatekey in ModelState.Keys)
+                foreach (var modelStatekey in ModelState.Keys)
                 {
                     var entry = ModelState[modelStatekey];
                     if (entry.ValidationState == ModelValidationState.Invalid)
                     {
-                        foreach(var err in entry.Errors)
+                        foreach (var err in entry.Errors)
                         {
                             results.RecordFailure(err.ErrorMessage, modelStatekey);
                         }
@@ -32,9 +29,9 @@ namespace Formula.SimpleAPI
                 }
 
                 results.SetMessage("Invalid Data");
-            } 
+            }
 
-            return results;          
+            return results;
         }
 
         protected List<string> GetErrors(ModelStateDictionary modelState)

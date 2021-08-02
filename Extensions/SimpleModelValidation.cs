@@ -1,8 +1,5 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Formula.SimpleAPI
 {
@@ -10,12 +7,14 @@ namespace Formula.SimpleAPI
     {
         public static IServiceCollection AddSimpleModelValidation(this IServiceCollection services)
         {
-            services.Configure<ApiBehaviorOptions>(options => {
-                options.InvalidModelStateResponseFactory = context => {
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
                     return ValidationFailureResponse.FromModelState(context);
                 };
             });
-            
+
             return services;
         }
     }

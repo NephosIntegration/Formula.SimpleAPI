@@ -28,7 +28,7 @@ namespace Formula.SimpleAPI
         }
 
         [HttpPost("query")]
-        public virtual async Task<Status<List<TModel>>> QueryAsync(object constraints)
+        public virtual async Task<Status<List<TModel>>> QueryAsync(TModel constraints)
         {
             var output = new Status<List<TModel>>();
             try

@@ -9,9 +9,10 @@ namespace Formula.SimpleAPI
 {
     [ApiController]
     [Route("[controller]")]
-    public abstract class ResourceControllerBase<TController, TModel, TRepository> : ReadOnlyResourceControllerBase<TController, TModel, TRepository>
+    public abstract class ResourceControllerBase<TController, TModel, TConstraints, TRepository> : ReadOnlyResourceControllerBase<TController, TModel, TConstraints, TRepository>
         where TController : class
         where TModel : new()
+        where TConstraints : new()
         where TRepository : IRepository<TModel>
     {
         public ResourceControllerBase(ILogger<TController> logger, TRepository repository) : base(logger, repository)

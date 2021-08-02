@@ -12,9 +12,10 @@ namespace Formula.SimpleAPI
 {
     [ApiController]
     [Route("[controller]")]
-    public abstract class ReadOnlyResourceControllerBase<TController, TModel, TRepository> : Controller, IResourceController<TController, TModel, TRepository>
+    public abstract class ReadOnlyResourceControllerBase<TController, TModel, TConstraints, TRepository> : Controller, IResourceController<TController, TModel, TRepository>
         where TController : class
         where TModel : new()
+        where TConstraints : new()
         where TRepository : IReadOnlyRepository<TModel>
     {
         protected readonly ILogger<TController> _logger;
@@ -28,7 +29,7 @@ namespace Formula.SimpleAPI
         }
 
         [HttpPost("query")]
-        public virtual async Task<Status<List<TModel>>> QueryAsync(TModel constraints)
+        public virtual async Task<Status<List<TModel>>> QueryAsync(TConstraints constraints)
         {
             var output = new Status<List<TModel>>();
             try

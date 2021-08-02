@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using System.Text.Json;
 using Formula.SimpleCore;
 
 namespace Formula.SimpleAPI
@@ -9,10 +6,10 @@ namespace Formula.SimpleAPI
     {
         public string[] GetOrigins()
         {
-            return this.instance.Origins;
+            return instance.Origins;
         }
 
-        public static new CorsConfigLoader Get(String fileName, GetDefaults getDefaults = null)
+        public static new CorsConfigLoader Get(string fileName, GetDefaults getDefaults = null)
         {
             var output = new CorsConfigLoader();
 

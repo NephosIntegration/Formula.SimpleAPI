@@ -1,7 +1,5 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Formula.SimpleAPI
 {
@@ -20,7 +18,8 @@ namespace Formula.SimpleAPI
             return services;
         }
 
-        public static IApplicationBuilder UseSimpleCors(this IApplicationBuilder app) {
+        public static IApplicationBuilder UseSimpleCors(this IApplicationBuilder app)
+        {
             return app.UseCors("SimpleCors");
         }
     }

@@ -1,12 +1,12 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Formula.SimpleCore;
+using Formula.SimpleRepo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Formula.SimpleRepo;
-using Formula.SimpleCore;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Formula.SimpleAPI
 {
@@ -38,7 +38,7 @@ namespace Formula.SimpleAPI
                     Newtonsoft.Json.Formatting.None,
                     new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
                 );
-                
+
                 var results = await _repository.GetAsync(serialized);
                 output.SetData(results.ToList());
             }
@@ -49,8 +49,10 @@ namespace Formula.SimpleAPI
             return output;
         }
 
+
+        [HttpPost("query")]
         [HttpGet("query/{constraints}")]
-        public virtual async Task<Status<List<TModel>>> QueryAsync(String constraints)
+        public virtual async Task<Status<List<TModel>>> QueryAsync(string constraints)
         {
             var output = new Status<List<TModel>>();
             try
@@ -67,7 +69,7 @@ namespace Formula.SimpleAPI
 
         // Gets a specific resource by id
         [HttpGet("{id}")]
-        public virtual async Task<Status<TModel>> Get(String id) 
+        public virtual async Task<Status<TModel>> Get(string id)
         {
             var output = new Status<TModel>();
             try

@@ -11,9 +11,9 @@ namespace Formula.SimpleAPI
     [Route("[controller]")]
     public abstract class ResourceControllerBase<TController, TModel, TConstraints, TRepository> : ReadOnlyResourceControllerBase<TController, TModel, TConstraints, TRepository>
         where TController : class
-        where TModel : new()
+        where TModel : class
         where TConstraints : new()
-        where TRepository : IRepository<TModel>
+        where TRepository : RepositoryBase<TModel, TConstraints>
     {
         public ResourceControllerBase(ILogger<TController> logger, TRepository repository) : base(logger, repository)
         {

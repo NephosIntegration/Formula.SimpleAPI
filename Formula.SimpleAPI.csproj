@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Formula.SimpleAPI</AssemblyName>
     <PackageId>Formula.SimpleAPI</PackageId>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple API</Title>
     <Description>Easy API's for .Net</Description>
@@ -30,7 +30,7 @@
     <PackageReference Include="Formula.SimpleCore" Version="1.1.*" />
     <PackageReference Include="Formula.SimpleRepo" Version="1.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

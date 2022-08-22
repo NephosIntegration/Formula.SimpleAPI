@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>Formula.SimpleAPI</AssemblyName>
     <PackageId>Formula.SimpleAPI</PackageId>
-    <Version>1.2.4</Version>
+    <Version>1.6.0</Version>
     <PackageTags>utilities</PackageTags>
     <Title>Formula Simple API</Title>
     <Description>Easy API's for .Net</Description>
     <Authors>Joshua Williams</Authors>  
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RepositoryUrl>https://github.com/NephosIntegration/Formula.SimpleAPI</RepositoryUrl>
     <PackageProjectUrl>https://github.com/NephosIntegration/Formula.SimpleAPI</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -28,8 +28,8 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Formula.SimpleCore" Version="1.1.*" />
-    <PackageReference Include="Formula.SimpleRepo" Version="1.0.*" />
+    <PackageReference Include="Formula.SimpleCore" Version="1.6.*" />
+    <PackageReference Include="Formula.SimpleRepo" Version="1.6.*" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 

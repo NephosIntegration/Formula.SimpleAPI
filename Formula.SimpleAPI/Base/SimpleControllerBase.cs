@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Formula.SimpleAPI
 {
-    public abstract class SimpleControllerBase : Controller
+    public abstract class SimpleControllerBase : ControllerBase
     {
         protected Status<object> HandleModelState()
         {
